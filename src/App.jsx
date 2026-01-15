@@ -12,6 +12,8 @@ import Company from './MyRouters/Company';
 import Admin from './MyRouters/Admin';
 import Faculty from './MyRouters/Faculty';
 import Student from './MyRouters/Student';
+import Login from './MyRouters/Login';
+import Protected from './MyRouters/Protected';
 
 const App = () => {
   return (
@@ -19,9 +21,11 @@ const App = () => {
       <BrowserRouter>
       <Navbar/>
         <Routes>
-           <Route path='/' element={<Home />}/>
+           {/* <Route path='/' element={<Home />}/> */}
+           <Route path='/' element={<Protected Component={Home}/>}/>
            <Route path='/about' element={<About />}/>
-           <Route path='/contact' element={<Contact />}/>
+           {/* <Route path='/contact' element={<Contact />}/> */}
+           <Route path='/contact' element={<Protected Component={Contact} />}/>
            <Route path='/search' element={<Search/>}/>
            <Route path='/company' element={<Company />}>
              <Route path='admin' element={<Admin />}/>
@@ -29,6 +33,7 @@ const App = () => {
              <Route path='student' element={<Student />}/>
            </Route>
            <Route path='/employee/:name/:age' element={<Employee />}/>
+           <Route path='/login' element={<Login/>}/>
            {/* <Route path='/*' element={<PageNotFound/>}/> */}
            <Route path='*/' element={<Navigate to='/' />}/>
         </Routes>
